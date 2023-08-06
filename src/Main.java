@@ -1,6 +1,6 @@
 /*This program calculates the amount of buckets needed to paint a wall. It features an interactive menu,
 .hasNextInt, Enhanced Switch & stripIndent (Java 14 and up), try-catch, and method overloading.
-This was written in IntelliJ with Java 17.*/
+This was written in IntelliJ with Java 17*/
 //Author: Daniel Magdziarz
 
 import java.util.Scanner;
@@ -20,11 +20,13 @@ public class Main {
                 userInputIntMenu = keyboard.nextInt();
                 keyboard.nextLine();
             } else {
-                System.out.println("Enter numerical value only.");
+                String wrongInput = keyboard.nextLine();
+                System.out.println("\"" + wrongInput + "\" is a wrong input. Enter numerical value for menu selection.");
                 continue;
             }
 
             switch (userInputIntMenu) {
+                case 0 -> menu();
                 case 1 -> {
                     double width, height, areaPerBucket, extraBuckets;
                     System.out.println("Enter width of the wall. ");
@@ -65,6 +67,7 @@ public class Main {
                 default -> System.out.println("Wrong menu selection. Try again.");
             }
         }
+        keyboard.close();
     }
 
     public static int getBucketCount(double width, double height, double areaPerBucket, double extraBuckets) {
@@ -108,6 +111,7 @@ public class Main {
     public static void menu() {
         System.out.println("""
                     \n***This program calculates the amount of paint buckets needed to paint a wall***
+                0. Press 0 to see the Main Menu.
                 1. Press 1 if you have the following:
                     a) Wall's WIDTH.
                     b) Wall's HEIGHT.
